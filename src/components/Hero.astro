@@ -57,17 +57,14 @@
 
     <div class="hero__visual anim-slide-up anim-d-400" aria-hidden="true">
       <div class="fiber-viz">
-        <div class="ring ring-1"></div>
-        <div class="ring ring-2"></div>
-        <div class="ring ring-3"></div>
-        <div class="ring ring-4"></div>
+        <div class="orbit orbit-1"><div class="ring ring-1"></div><span class="orbit-dot d-1"></span></div>
+        <div class="orbit orbit-2"><div class="ring ring-2"></div><span class="orbit-dot d-2"></span></div>
+        <div class="orbit orbit-3"><div class="ring ring-3"></div><span class="orbit-dot d-3"></span></div>
+        <div class="orbit orbit-4"><div class="ring ring-4"></div><span class="orbit-dot d-4"></span></div>
         <div class="ring ring-5"></div>
         <div class="core"></div>
         <div class="core-pulse"></div>
-        <div class="signal s1"></div>
-        <div class="signal s2"></div>
-        <div class="signal s3"></div>
-        <div class="signal s4"></div>
+        <div class="core-pulse core-pulse-2"></div>
         <span class="fiber-label fl-1">Fibra Óptica</span>
         <span class="fiber-label fl-2">Cabeamento</span>
         <span class="fiber-label fl-3">Elétrica</span>
@@ -95,7 +92,22 @@
     radial-gradient(ellipse 50% 40% at 100% 0%, rgba(255, 107, 26, 0.05) 0%, transparent 60%),
     var(--bg-primary);
   padding: 7rem 0 4rem;
+  overflow: hidden;
 }
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle at 1px 1px, rgba(10, 61, 145, 0.13) 1px, transparent 0);
+  background-size: 32px 32px;
+  mask-image: radial-gradient(ellipse 60% 70% at 50% 50%, transparent 30%, #000 100%);
+  -webkit-mask-image: radial-gradient(ellipse 60% 70% at 50% 50%, transparent 30%, #000 100%);
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+.hero > * { position: relative; }
 
 .hero__inner {
   display: grid;
@@ -186,38 +198,94 @@
   flex-shrink: 0;
 }
 
-.ring {
+/* Orbit containers — these rotate, taking the dot with them */
+.orbit {
   position: absolute;
-  border-radius: 50%;
   top: 50%;
   left: 50%;
+  border-radius: 50%;
   transform: translate(-50%, -50%);
+  animation: spin-cw linear infinite;
+}
+
+.orbit-1 { width: 340px; height: 340px; animation-duration: 38s; animation-direction: reverse; }
+.orbit-2 { width: 270px; height: 270px; animation-duration: 26s; }
+.orbit-3 { width: 205px; height: 205px; animation-duration: 18s; animation-direction: reverse; }
+.orbit-4 { width: 145px; height: 145px; animation-duration: 12s; }
+
+@keyframes spin-cw {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to   { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+.ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
   border-style: solid;
 }
 
-.ring-1 { width: 340px; height: 340px; border-width: 1px; border-color: var(--color-border); }
-.ring-2 { width: 270px; height: 270px; border-width: 1px; border-color: rgba(10,61,145,0.14); }
-.ring-3 { width: 205px; height: 205px; border-width: 1.5px; border-color: rgba(10,61,145,0.2); }
-.ring-4 { width: 145px; height: 145px; border-width: 2px; border-color: rgba(10,61,145,0.28); }
-.ring-5 { width: 90px; height: 90px; border-width: 2px; border-color: rgba(10,61,145,0.38); }
+.orbit-1 .ring { border-width: 1px; border-color: var(--color-border); }
+.orbit-2 .ring { border-width: 1px; border-color: rgba(10,61,145,0.14); }
+.orbit-3 .ring { border-width: 1.5px; border-color: rgba(10,61,145,0.2); border-style: dashed; }
+.orbit-4 .ring { border-width: 2px; border-color: rgba(10,61,145,0.28); }
+.ring-5 {
+  position: absolute;
+  width: 90px;
+  height: 90px;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  border: 2px solid rgba(10,61,145,0.38);
+}
+
+/* Orbiting dot — sits at top of each orbit, rotates with parent */
+.orbit-dot {
+  position: absolute;
+  top: -7px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  box-shadow: 0 0 0 4px rgba(255, 107, 26, 0.16),
+              0 0 16px rgba(255, 107, 26, 0.5);
+}
+
+.d-1 { background: var(--color-primary); box-shadow: 0 0 0 4px rgba(10,61,145,0.12), 0 0 16px rgba(10,61,145,0.45); }
+.d-3 { background: var(--color-primary); box-shadow: 0 0 0 4px rgba(10,61,145,0.12), 0 0 14px rgba(10,61,145,0.4); width: 11px; height: 11px; top: -5.5px; }
+.d-2 { width: 11px; height: 11px; top: -5.5px; }
+.d-4 { width: 9px; height: 9px; top: -4.5px; }
 
 .core {
   position: absolute;
-  width: 32px;
-  height: 32px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
-  background: var(--color-primary);
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   animation: pulse 2.8s ease-in-out infinite;
   z-index: 2;
+  box-shadow: 0 0 0 6px rgba(10, 61, 145, 0.1),
+              0 0 30px rgba(10, 61, 145, 0.35);
+}
+
+.core::after {
+  content: '';
+  position: absolute;
+  inset: 9px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  box-shadow: 0 0 12px rgba(255, 107, 26, 0.7);
 }
 
 .core-pulse {
   position: absolute;
-  width: 32px;
-  height: 32px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
   border: 2px solid var(--color-accent);
   top: 50%;
@@ -227,22 +295,10 @@
   z-index: 1;
 }
 
-/* Signal dots on rings */
-.signal {
-  position: absolute;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--color-accent);
-  top: 50%;
-  left: 50%;
-  transform-origin: center;
+.core-pulse-2 {
+  animation-delay: 1.4s;
+  border-color: var(--color-primary);
 }
-
-.s1 { transform: translate(-50%, -50%) translateY(-102px); }
-.s2 { transform: translate(-50%, -50%) translateX(102px); }
-.s3 { transform: translate(-50%, -50%) translateY(102px); }
-.s4 { transform: translate(-50%, -50%) translateX(-102px); }
 
 /* Labels around the viz */
 .fiber-label {

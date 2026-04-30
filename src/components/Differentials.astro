@@ -55,7 +55,30 @@ const items = [
 .diffs {
   padding: var(--section-pad);
   background: var(--bg-primary);
+  position: relative;
+  overflow: hidden;
 }
+
+.diffs::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: -200px;
+  width: 500px;
+  height: 500px;
+  background: conic-gradient(from 180deg at 50% 50%,
+    rgba(255, 107, 26, 0) 0deg,
+    rgba(255, 107, 26, 0.06) 80deg,
+    rgba(10, 61, 145, 0.08) 180deg,
+    rgba(10, 61, 145, 0) 280deg,
+    rgba(255, 107, 26, 0) 360deg);
+  border-radius: 50%;
+  filter: blur(60px);
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.diffs > .container { position: relative; }
 
 .diffs__inner {
   display: grid;
@@ -101,10 +124,32 @@ const items = [
 
 .diff-item {
   display: flex;
-  gap: 1.25rem;
+  gap: 1.5rem;
   align-items: flex-start;
-  padding: 1.75rem 0;
+  padding: 1.75rem 0.5rem 1.75rem 0;
   border-bottom: 1px solid var(--color-border);
+  position: relative;
+  transition: padding-left var(--transition);
+}
+
+.diff-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 60%;
+  background: var(--color-accent);
+  transition: width 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.diff-item:hover {
+  padding-left: 1rem;
+}
+
+.diff-item:hover::before {
+  width: 3px;
 }
 
 .diff-item:first-child {
@@ -113,13 +158,19 @@ const items = [
 
 .diff-item__num {
   font-family: var(--font-heading);
-  font-size: 2.25rem;
+  font-size: 2.5rem;
   font-weight: 800;
   color: var(--color-accent);
   line-height: 1;
   flex-shrink: 0;
   letter-spacing: -0.02em;
-  min-width: 48px;
+  min-width: 56px;
+  position: relative;
+  transition: transform var(--transition);
+}
+
+.diff-item:hover .diff-item__num {
+  transform: translateX(2px);
 }
 
 .diff-item__title {

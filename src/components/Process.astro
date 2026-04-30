@@ -38,8 +38,10 @@ const steps = [
       {steps.map((step, i) => (
         <div class="step reveal" data-delay={String(i * 120)}>
           <div class="step__connector" aria-hidden="true"></div>
+          <span class="step__bgnum" aria-hidden="true">{step.num}</span>
           <div class="step__node">
             <span class="step__num">{step.num}</span>
+            <span class="step__node-glow" aria-hidden="true"></span>
           </div>
           <div class="step__body">
             <h3 class="step__title">{step.title}</h3>
@@ -68,8 +70,25 @@ const steps = [
 <style>
 .process {
   padding: var(--section-pad);
-  background: var(--bg-secondary);
+  background:
+    linear-gradient(180deg, var(--bg-secondary) 0%, #e7eefb 100%);
+  position: relative;
+  overflow: hidden;
 }
+
+.process::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle at 1px 1px, rgba(10, 61, 145, 0.08) 1px, transparent 0);
+  background-size: 28px 28px;
+  mask-image: linear-gradient(180deg, transparent 0%, #000 30%, #000 70%, transparent 100%);
+  -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 30%, #000 70%, transparent 100%);
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+.process > .container { position: relative; }
 
 .process__header {
   margin-bottom: 3.5rem;
@@ -153,10 +172,35 @@ const steps = [
 
 .step:last-child::before { display: none; }
 
+/* Background giant number */
+.step__bgnum {
+  position: absolute;
+  top: -28px;
+  left: 0;
+  font-family: var(--font-heading);
+  font-size: 8rem;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--color-primary);
+  opacity: 0.05;
+  letter-spacing: -0.04em;
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+}
+
+@media (max-width: 767px) {
+  .step__bgnum {
+    font-size: 5.5rem;
+    top: -10px;
+    left: -8px;
+  }
+}
+
 /* Node */
 .step__node {
-  width: 56px;
-  height: 56px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
   border: 2px solid var(--color-border);
   background: var(--bg-primary);
@@ -165,22 +209,45 @@ const steps = [
   justify-content: center;
   flex-shrink: 0;
   margin-bottom: 1.125rem;
-  transition: all var(--transition);
+  transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
   position: relative;
   z-index: 1;
+  box-shadow: 0 4px 14px rgba(10, 61, 145, 0.06);
+}
+
+.step__node-glow {
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 107, 26, 0.4) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+  z-index: -1;
 }
 
 .step:hover .step__node {
-  border-color: var(--color-primary);
-  background: var(--bg-secondary);
+  border-color: var(--color-accent);
+  background: linear-gradient(135deg, #fff 0%, var(--bg-secondary) 100%);
+  transform: scale(1.08);
+  box-shadow: 0 8px 24px rgba(255, 107, 26, 0.18);
+}
+
+.step:hover .step__node-glow {
+  opacity: 1;
 }
 
 .step__num {
   font-family: var(--font-heading);
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   font-weight: 800;
   color: var(--color-accent);
   letter-spacing: -0.01em;
+  transition: transform var(--transition);
+}
+
+.step:hover .step__num {
+  transform: scale(1.1);
 }
 
 @media (max-width: 767px) {
