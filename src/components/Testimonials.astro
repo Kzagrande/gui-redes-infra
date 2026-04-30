@@ -1,0 +1,345 @@
+---
+const testimonials = [
+  {
+    quote: 'Refizeram todo o cabeamento da nossa fábrica em três dias, sem parar a operação. Documentação impecável e a rede ficou outra coisa.',
+    name: 'Ricardo Almeida',
+    role: 'Gerente de TI',
+    company: 'Indústria Metalúrgica',
+    initial: 'R',
+  },
+  {
+    quote: 'Contratei para passar fibra entre dois galpões e fiquei surpreso com o nível técnico. Não foi só fazer — explicaram o porquê de cada decisão.',
+    name: 'Patrícia Souza',
+    role: 'Diretora de Operações',
+    company: 'Centro Logístico',
+    initial: 'P',
+  },
+  {
+    quote: 'A AJ assumiu nosso suporte de TI quando a empresa anterior travou tudo. Em 48h estava normalizado, e até hoje, três anos depois, sem dor de cabeça.',
+    name: 'Marco Antonio',
+    role: 'Sócio-fundador',
+    company: 'Escritório de Contabilidade',
+    initial: 'M',
+  },
+  {
+    quote: 'Projeto elétrico, cabeamento estruturado e rede Wi-Fi para a unidade nova — entregaram tudo dentro do prazo. Recomendo de olhos fechados.',
+    name: 'Juliana Ferreira',
+    role: 'Coordenadora Administrativa',
+    company: 'Clínica Médica',
+    initial: 'J',
+  },
+];
+---
+<section class="testimonials" id="depoimentos">
+  <div class="container">
+    <div class="testimonials__header reveal">
+      <span class="section-label">Quem Confia</span>
+      <h2 class="section-title testimonials__title">
+        Histórias de quem trabalha<br />
+        <span class="text-accent">com a gente.</span>
+      </h2>
+      <p class="section-sub">
+        Empresas que escolheram parar de se preocupar com a rede e a infraestrutura
+        para focar no que realmente importa.
+      </p>
+    </div>
+
+    <div class="testimonials__rail" id="testimonials-rail">
+      <div class="testimonials__track" id="testimonials-track">
+        {testimonials.map((t, i) => (
+          <article class="t-card reveal" data-delay={String(i * 120)}>
+            <svg class="t-card__quote" width="40" height="40" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M9.983 3v7.391c0 5.704-3.731 9.57-8.983 10.609l-.995-2.151c2.432-.917 3.995-3.638 3.995-5.849h-4v-10h9.983zm14.017 0v7.391c0 5.704-3.748 9.571-9 10.609l-.996-2.151c2.433-.917 3.996-3.638 3.996-5.849h-3.983v-10h9.983z"/>
+            </svg>
+            <p class="t-card__text">{t.quote}</p>
+            <div class="t-card__author">
+              <span class="t-card__avatar" aria-hidden="true">{t.initial}</span>
+              <div class="t-card__meta">
+                <strong class="t-card__name">{t.name}</strong>
+                <span class="t-card__role">{t.role} · {t.company}</span>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+
+    <div class="testimonials__nav">
+      <button class="t-nav-btn" id="t-prev" aria-label="Depoimento anterior">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+          <polyline points="15 18 9 12 15 6"/>
+        </svg>
+      </button>
+      <div class="t-dots" id="t-dots" role="tablist" aria-label="Navegação de depoimentos">
+        {testimonials.map((_, i) => (
+          <button class={`t-dot${i === 0 ? ' is-active' : ''}`} data-index={i} aria-label={`Ir para depoimento ${i + 1}`}></button>
+        ))}
+      </div>
+      <button class="t-nav-btn" id="t-next" aria-label="Próximo depoimento">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+          <polyline points="9 18 15 12 9 6"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+</section>
+
+<style>
+.testimonials {
+  padding: var(--section-pad);
+  background: var(--bg-secondary);
+  position: relative;
+  overflow: hidden;
+}
+
+.testimonials::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(10, 61, 145, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(10, 61, 145, 0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 50%, #000 0%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 50%, #000 0%, transparent 100%);
+  pointer-events: none;
+}
+
+.testimonials > * { position: relative; }
+
+.testimonials__header {
+  margin-bottom: 3.5rem;
+  max-width: 720px;
+}
+
+.testimonials__title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  margin-bottom: 1rem;
+}
+
+/* Rail / track */
+.testimonials__rail {
+  overflow: hidden;
+  margin: 0 -1.5rem;
+  padding: 0.5rem 1.5rem;
+}
+
+.testimonials__track {
+  display: flex;
+  gap: 1.25rem;
+  transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+
+.t-card {
+  flex: 0 0 100%;
+  min-width: 0;
+  background: var(--bg-primary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 2.25rem 1.875rem 1.75rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  box-shadow: var(--shadow-card);
+  transition: box-shadow var(--transition), transform var(--transition), border-color var(--transition);
+}
+
+@media (min-width: 640px) {
+  .t-card { flex: 0 0 calc(50% - 0.625rem); }
+}
+
+@media (min-width: 1024px) {
+  .t-card { flex: 0 0 calc(33.333% - 0.834rem); }
+}
+
+.t-card:hover {
+  border-color: rgba(255, 107, 26, 0.4);
+  box-shadow: 0 14px 40px rgba(10, 61, 145, 0.12);
+  transform: translateY(-4px);
+}
+
+.t-card__quote {
+  color: var(--color-accent);
+  opacity: 0.18;
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+  width: 36px;
+  height: 36px;
+}
+
+.t-card__text {
+  font-size: 1rem;
+  color: var(--color-text);
+  line-height: 1.7;
+  font-weight: 500;
+  flex: 1;
+}
+
+.t-card__author {
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--color-border);
+}
+
+.t-card__avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 130%);
+  color: #FFFFFF;
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  letter-spacing: 0;
+}
+
+.t-card__meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+}
+
+.t-card__name {
+  font-family: var(--font-heading);
+  font-size: 1.0625rem;
+  font-weight: 700;
+  color: var(--color-text);
+  letter-spacing: -0.01em;
+}
+
+.t-card__role {
+  font-size: 0.8125rem;
+  color: var(--color-muted);
+}
+
+/* Nav controls */
+.testimonials__nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+  margin-top: 2.5rem;
+}
+
+.t-nav-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1.5px solid var(--color-border);
+  background: var(--bg-primary);
+  color: var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.t-nav-btn:hover {
+  border-color: var(--color-primary);
+  background: var(--color-primary);
+  color: #FFFFFF;
+  transform: translateY(-2px);
+}
+
+.t-nav-btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.t-dots {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.t-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-border);
+  cursor: pointer;
+  transition: all var(--transition);
+  border: none;
+  padding: 0;
+}
+
+.t-dot.is-active {
+  width: 28px;
+  border-radius: var(--radius-pill);
+  background: var(--color-accent);
+}
+
+.t-dot:hover:not(.is-active) {
+  background: var(--color-muted);
+}
+</style>
+
+<script>
+const track = document.getElementById('testimonials-track');
+const rail = document.getElementById('testimonials-rail');
+const prevBtn = document.getElementById('t-prev');
+const nextBtn = document.getElementById('t-next');
+const dots = document.querySelectorAll<HTMLButtonElement>('.t-dot');
+
+if (track && rail && prevBtn && nextBtn) {
+  let index = 0;
+
+  function visibleCards(): number {
+    const w = window.innerWidth;
+    if (w >= 1024) return 3;
+    if (w >= 640) return 2;
+    return 1;
+  }
+
+  function maxIndex(): number {
+    return Math.max(0, dots.length - visibleCards());
+  }
+
+  function update() {
+    if (!track) return;
+    const card = track.querySelector('.t-card') as HTMLElement | null;
+    if (!card) return;
+    const gap = 20;
+    const offset = (card.offsetWidth + gap) * index;
+    track.style.transform = `translateX(-${offset}px)`;
+
+    dots.forEach((d, i) => d.classList.toggle('is-active', i === index));
+    (prevBtn as HTMLButtonElement).disabled = index === 0;
+    (nextBtn as HTMLButtonElement).disabled = index >= maxIndex();
+  }
+
+  prevBtn.addEventListener('click', () => {
+    index = Math.max(0, index - 1);
+    update();
+  });
+
+  nextBtn.addEventListener('click', () => {
+    index = Math.min(maxIndex(), index + 1);
+    update();
+  });
+
+  dots.forEach((dot, i) => {
+    dot.addEventListener('click', () => {
+      index = Math.min(i, maxIndex());
+      update();
+    });
+  });
+
+  window.addEventListener('resize', () => {
+    index = Math.min(index, maxIndex());
+    update();
+  });
+
+  update();
+}
+</script>
