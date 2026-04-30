@@ -1,0 +1,134 @@
+---
+const services = [
+  {
+    icon: `<svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.5" fill="currentColor" stroke="none"/><line x1="12" y1="3" x2="12" y2="7"/><line x1="21" y1="12" x2="17" y2="12"/><line x1="12" y1="21" x2="12" y2="17"/><line x1="3" y1="12" x2="7" y2="12"/></svg>`,
+    title: 'Infraestrutura de Fibra Óptica',
+    desc: 'Projetos e implantação de redes de fibra óptica para empresas de todos os portes. Alta capacidade de transmissão com baixa latência.',
+  },
+  {
+    icon: `<svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="3" height="16" rx="1"/><rect x="19" y="4" width="3" height="16" rx="1"/><line x1="5" y1="8" x2="19" y2="8"/><line x1="5" y1="12" x2="19" y2="12"/><line x1="5" y1="16" x2="19" y2="16"/></svg>`,
+    title: 'Cabeamento Estruturado',
+    desc: 'Instalação certificada de infraestrutura de rede seguindo padrões ABNT. Organização, rastreabilidade e performance garantidas.',
+  },
+  {
+    icon: `<svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2L4.09 12.96A1 1 0 005 14.5h6.5L10 22l9.91-10.96A1 1 0 0019 10h-6.5L13 2z"/></svg>`,
+    title: 'Instalações Elétricas',
+    desc: 'Projetos elétricos residenciais, comerciais e industriais com segurança e eficiência. Laudos, adequações e manutenções preventivas.',
+  },
+  {
+    icon: `<svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="13" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/></svg>`,
+    title: 'Suporte em Informática / TI',
+    desc: 'Manutenção preventiva e corretiva, suporte remoto e presencial, formatações, configuração de equipamentos e gestão de ativos de TI.',
+  },
+  {
+    icon: `<svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="5" r="2"/><circle cx="5" cy="19" r="2"/><circle cx="19" cy="19" r="2"/><path d="M12 7v4"/><path d="M10.5 15.5L6.5 17.5"/><path d="M13.5 15.5L17.5 17.5"/><path d="M12 11L6 17"/><path d="M12 11L18 17"/></svg>`,
+    title: 'Redes Corporativas',
+    desc: 'Configuração de switches, roteadores, firewalls e access points. Projetos de rede completos para ambientes corporativos de qualquer porte.',
+  },
+];
+---
+<section class="services" id="servicos">
+  <div class="container">
+    <div class="services__header reveal">
+      <span class="section-label">Nossos Serviços</span>
+      <h2 class="section-title services__title">
+        Tudo que sua empresa<br />
+        precisa em um lugar só.
+      </h2>
+      <p class="section-sub">
+        Oferecemos soluções integradas de infraestrutura para que seu negócio funcione
+        com segurança, velocidade e estabilidade.
+      </p>
+    </div>
+
+    <div class="services__grid">
+      {services.map((s, i) => (
+        <article class="card services__card reveal" data-delay={String(i % 3 * 150)}>
+          <div class="card__icon" set:html={s.icon} />
+          <h3 class="card__title">{s.title}</h3>
+          <p class="card__desc">{s.desc}</p>
+          <a href="#contato" class="card__cta">
+            Solicitar orçamento
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+              <line x1="5" y1="12" x2="19" y2="12"/>
+              <polyline points="12 5 19 12 12 19"/>
+            </svg>
+          </a>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+.services {
+  padding: var(--section-pad);
+  background: var(--bg-secondary);
+}
+
+.services__header {
+  margin-bottom: 3.5rem;
+}
+
+.services__title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  margin-bottom: 1rem;
+}
+
+.services__grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+}
+
+.services__card {
+  flex: 0 0 100%;
+}
+
+@media (min-width: 600px) {
+  .services__card { flex: 0 0 calc(50% - 0.75rem); }
+}
+
+@media (min-width: 960px) {
+  .services__card { flex: 0 0 calc(33.333% - 1rem); }
+}
+
+.card__icon {
+  color: var(--color-primary);
+  margin-bottom: 1.25rem;
+  display: flex;
+}
+
+.card__title {
+  font-family: var(--font-heading);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: 0.625rem;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+
+.card__desc {
+  font-size: 0.9375rem;
+  color: var(--color-muted);
+  line-height: 1.7;
+  margin-bottom: 1.375rem;
+}
+
+.card__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  transition: gap var(--transition), color var(--transition);
+}
+
+.card__cta:hover {
+  gap: 0.625rem;
+  color: var(--color-accent);
+}
+</style>

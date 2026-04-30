@@ -1,0 +1,29 @@
+:root {
+  --bg-primary:     #FFFFFF;
+  --bg-secondary:   #F0F4FF;
+  --bg-dark:        #0D1B3E;
+  --color-primary:  #0A3D91;
+  --color-primary-light: #1A5FD4;
+  --color-accent:   #FF6B1A;
+  --color-text:     #0D1B3E;
+  --color-muted:    #5A6889;
+  --color-border:   #D6E0F5;
+  --color-whatsapp: #25D366;
+
+  --font-heading: 'Barlow Condensed', sans-serif;
+  --font-body:    'Mulish', sans-serif;
+
+  --container-max: 1200px;
+  --section-pad:   clamp(4.5rem, 9vw, 7.5rem) 0;
+
+  --radius-sm:   6px;
+  --radius-md:   12px;
+  --radius-lg:   20px;
+  --radius-pill: 999px;
+
+  --shadow-card:       0 2px 20px rgba(10, 61, 145, 0.07);
+  --shadow-card-hover: 0 10px 40px rgba(10, 61, 145, 0.15);
+  --shadow-btn:        0 4px 14px rgba(10, 61, 145, 0.25);
+
+  --transition: 0.25s ease;
+}

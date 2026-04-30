@@ -1,0 +1,44 @@
+---
+import '../styles/global.css';
+
+export interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'AJ Redes & Infra — Fibra Óptica, Cabeamento, Elétrica e TI',
+  description = 'Soluções completas em fibra óptica, cabeamento estruturado, instalações elétricas e suporte de TI. Atendimento profissional com garantia nos serviços.',
+} = Astro.props;
+---
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content={description} />
+  <meta name="keywords" content="fibra óptica, cabeamento estruturado, instalações elétricas, suporte TI, redes corporativas, infraestrutura de redes" />
+  <meta name="robots" content="index, follow" />
+
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://ajredeseinfra.com.br" />
+  <meta property="og:image" content="https://ajredeseinfra.com.br/og-image.jpg" />
+  <meta property="og:locale" content="pt_BR" />
+
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Mulish:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <title>{title}</title>
+</head>
+<body>
+  <slot />
+</body>
+</html>
