@@ -14,37 +14,37 @@ const stats = [
           <span class="rack__dot rack__dot--r"></span>
           <span class="rack__dot rack__dot--y"></span>
           <span class="rack__dot rack__dot--g"></span>
-          <span class="rack__title">aj-redes ~ /infra/status</span>
+          <span class="rack__title">gm-energia ~ /qgbt/status</span>
         </div>
         <div class="rack__body">
-          <div class="line"><span class="line__prompt">$</span> ping core-router-01<span class="cursor"></span></div>
-          <div class="line line--ok">→ Latência: 0.4ms · Uptime: 99.99%</div>
-          <div class="line"><span class="line__prompt">$</span> check fiber-link --all</div>
-          <div class="line line--ok">→ 24/24 enlaces ativos · 10 Gbps</div>
-          <div class="line"><span class="line__prompt">$</span> status power --rack</div>
-          <div class="line line--ok">→ Alimentação redundante: OK</div>
+          <div class="line"><span class="line__prompt">$</span> check qgbt --all-circuits</div>
+          <div class="line line--ok">→ 38/38 circuitos · Carga 62% · Estável</div>
+          <div class="line"><span class="line__prompt">$</span> measure tensao --fases</div>
+          <div class="line line--ok">→ R: 220V · S: 219V · T: 221V (Δ &lt; 1%)</div>
+          <div class="line"><span class="line__prompt">$</span> verify aterramento --tdr</div>
+          <div class="line line--ok">→ Resistência: 1.8Ω · NBR 5410 ✓</div>
           <div class="line"><span class="line__prompt">$</span> _<span class="cursor"></span></div>
         </div>
       </div>
     </div>
 
     <div class="about__content">
-      <span class="section-label reveal">Sobre a AJ Redes & Infra</span>
+      <span class="section-label reveal">Sobre a G&M</span>
       <h2 class="section-title about__title reveal" data-delay="100">
-        Infraestrutura é<br />
-        <span class="text-accent">o nosso negócio.</span>
+        Energia segura é<br />
+        <span class="text-accent">a nossa especialidade.</span>
       </h2>
 
       <p class="about__text reveal" data-delay="200">
-        Nascemos da paixão por redes, energia e tecnologia. Há mais de uma década
-        ajudamos empresas a montar a base que sustenta tudo o que elas fazem
-        digitalmente — do cabo passado dentro do forro ao roteador que conversa com a nuvem.
+        A G&M nasceu da especialização em <strong>instalações elétricas industriais e
+        comerciais</strong>. Há mais de uma década, projetamos, executamos e mantemos
+        sistemas elétricos que sustentam a operação de fábricas, escritórios, clínicas e centros logísticos.
       </p>
 
       <p class="about__text reveal" data-delay="300">
-        Acreditamos que infraestrutura bem feita é invisível: ninguém percebe quando funciona,
-        todo mundo sente quando falha. Por isso entregamos com critério técnico,
-        documentação completa e suporte que não desaparece depois da fatura.
+        Energia bem feita é silenciosa: ninguém percebe quando funciona, todos sentem
+        quando falha. Por isso seguimos NBR 5410 e NR 10 à risca, entregamos laudos
+        técnicos completos e oferecemos suporte que continua depois da entrega — porque o que está em jogo é a continuidade do seu negócio.
       </p>
 
       <ul class="about__values reveal" data-delay="400">
@@ -52,19 +52,19 @@ const stats = [
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
             <polyline points="20 6 9 17 4 12"/>
           </svg>
-          <span><strong>Transparência</strong> — sem letra miúda, sem custo escondido.</span>
+          <span><strong>Segurança em primeiro lugar</strong> — NBR 5410, NR 10 e laudos completos.</span>
         </li>
         <li>
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
             <polyline points="20 6 9 17 4 12"/>
           </svg>
-          <span><strong>Excelência técnica</strong> — padrões ABNT, materiais certificados.</span>
+          <span><strong>Materiais certificados</strong> — sem improviso, sem componente paralelo.</span>
         </li>
         <li>
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
             <polyline points="20 6 9 17 4 12"/>
           </svg>
-          <span><strong>Parceria de longo prazo</strong> — você cresce, a gente acompanha.</span>
+          <span><strong>Manutenção contínua</strong> — você cresce, sua infraestrutura acompanha.</span>
         </li>
       </ul>
     </div>

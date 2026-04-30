@@ -13,11 +13,12 @@ const links = [
 <footer class="footer">
   <div class="container footer__inner">
     <div class="footer__brand">
-      <a href="/" class="footer__logo" aria-label="AJ Redes & Infra - Início">
-        AJ Redes <span class="footer__amp">&amp;</span> Infra
+      <a href="/" class="footer__logo" aria-label="G&M Energia & Infraestrutura - Início">
+        G<span class="footer__amp">&amp;</span>M
+        <span class="footer__logo-sub">Energia &amp; Infra</span>
       </a>
       <p class="footer__tagline">
-        Infraestrutura que conecta o que importa.
+        Energia segura e infraestrutura que mantêm sua operação no ar.
       </p>
       <a
         href="https://wa.me/5511999999999?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento."
@@ -48,12 +49,12 @@ const links = [
         </svg>
         (11) 99999-9999
       </a>
-      <a href="mailto:contato@ajredeseinfra.com.br" class="footer__link footer__contact-item">
+      <a href="mailto:contato@gm-energia.com.br" class="footer__link footer__contact-item">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
           <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
           <polyline points="22,6 12,13 2,6"/>
         </svg>
-        contato@ajredeseinfra.com.br
+        contato@gm-energia.com.br
       </a>
       <span class="footer__contact-item footer__muted">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
@@ -71,7 +72,7 @@ const links = [
   <div class="footer__bar">
     <div class="container footer__bar-inner">
       <p class="footer__copy">
-        &copy; {year} AJ Redes &amp; Infra. Todos os direitos reservados.
+        &copy; {year} G&amp;M Energia &amp; Infraestrutura. Todos os direitos reservados.
       </p>
     </div>
   </div>
@@ -100,16 +101,30 @@ const links = [
 
 /* Brand */
 .footer__logo {
-  display: inline-block;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.65rem;
   font-family: var(--font-heading);
-  font-size: 1.4rem;
+  font-size: 1.65rem;
   font-weight: 800;
   color: #FFFFFF;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.02em;
   margin-bottom: 0.875rem;
+  line-height: 1;
 }
 
 .footer__amp { color: var(--color-accent); }
+
+.footer__logo-sub {
+  font-family: var(--font-body);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.45);
+  padding-left: 0.6rem;
+  border-left: 1px solid rgba(255, 255, 255, 0.2);
+}
 
 .footer__tagline {
   font-size: 0.9rem;

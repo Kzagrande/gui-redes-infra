@@ -3,16 +3,16 @@
 <section class="hero" id="inicio">
   <div class="container hero__inner">
     <div class="hero__content">
-      <span class="section-label anim-slide-up">Infraestrutura Profissional</span>
+      <span class="section-label anim-slide-up">Energia &amp; Infraestrutura Profissional</span>
 
       <h1 class="hero__headline anim-slide-up anim-d-200">
-        Conectando o futuro<br />
-        <span class="hero__headline-accent">da sua empresa.</span>
+        Energia segura.<br />
+        <span class="hero__headline-accent">Operação no ar.</span>
       </h1>
 
       <p class="hero__sub anim-slide-up anim-d-400">
-        Fibra óptica, cabeamento estruturado, instalações elétricas e TI —
-        do projeto à execução. Atendemos <strong>[Cidade/Região]</strong> e região.
+        Instalações elétricas, projetos e laudos, cabeamento estruturado e redes —
+        do dimensionamento à energização. Atendemos <strong>[Cidade/Região]</strong> e região.
       </p>
 
       <div class="hero__ctas anim-slide-up anim-d-600">
@@ -65,25 +65,20 @@
         <div class="core"></div>
         <div class="core-pulse"></div>
         <div class="core-pulse core-pulse-2"></div>
-        <span class="fiber-label fl-1">Fibra Óptica</span>
+        <span class="fiber-label fl-1">Energia</span>
         <span class="fiber-label fl-2">Cabeamento</span>
-        <span class="fiber-label fl-3">Elétrica</span>
-        <span class="fiber-label fl-4">TI & Redes</span>
+        <span class="fiber-label fl-3">Iluminação</span>
+        <span class="fiber-label fl-4">Redes & TI</span>
       </div>
     </div>
   </div>
 
-  <a href="#servicos" class="scroll-hint" aria-label="Ver serviços">
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-      <polyline points="6 9 12 15 18 9"/>
-    </svg>
-  </a>
 </section>
 
 <style>
 .hero {
   position: relative;
-  min-height: 100svh;
+  min-height: calc(100svh - 68px);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -91,7 +86,7 @@
     radial-gradient(ellipse 70% 60% at 0% 110%, rgba(10, 61, 145, 0.07) 0%, transparent 65%),
     radial-gradient(ellipse 50% 40% at 100% 0%, rgba(255, 107, 26, 0.05) 0%, transparent 60%),
     var(--bg-primary);
-  padding: 7rem 0 4rem;
+  padding: 2.5rem 0 3.5rem;
   overflow: hidden;
 }
 
@@ -316,29 +311,6 @@
 .fl-2 { top: 50%; right: -4px; transform: translateY(-50%); }
 .fl-3 { bottom: 6px; left: 50%; transform: translateX(-50%); }
 .fl-4 { top: 50%; left: -4px; transform: translateY(-50%); }
-
-/* Scroll hint */
-.scroll-hint {
-  position: absolute;
-  bottom: 2rem;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  border: 1.5px solid var(--color-border);
-  color: var(--color-muted);
-  animation: bounce 2s ease-in-out infinite;
-  transition: color var(--transition), border-color var(--transition);
-}
-
-.scroll-hint:hover {
-  color: var(--color-primary);
-  border-color: var(--color-primary);
-}
 
 @media (max-width: 899px) {
   .hero__visual { display: none; }

@@ -1,29 +1,35 @@
 ---
 const services = [
   {
-    icon: `<svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.5" fill="currentColor" stroke="none"/><line x1="12" y1="3" x2="12" y2="7"/><line x1="21" y1="12" x2="17" y2="12"/><line x1="12" y1="21" x2="12" y2="17"/><line x1="3" y1="12" x2="7" y2="12"/></svg>`,
-    title: 'Infraestrutura de Fibra Óptica',
-    desc: 'Projetos e implantação de redes de fibra óptica para empresas de todos os portes. Alta capacidade de transmissão com baixa latência.',
+    icon: `<svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2L4.09 12.96A1 1 0 005 14.5h6.5L10 22l9.91-10.96A1 1 0 0019 10h-6.5L13 2z"/></svg>`,
+    title: 'Instalações Elétricas',
+    desc: 'Instalações prediais, comerciais e industriais executadas conforme NBR 5410. Quadros, circuitos, tomadas e iluminação com segurança e eficiência energética.',
+    featured: true,
+  },
+  {
+    icon: `<svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="14" x2="15" y2="14"/><line x1="9" y1="18" x2="13" y2="18"/></svg>`,
+    title: 'Projetos & Laudos Elétricos',
+    desc: 'Projetos com ART, laudos técnicos, adequação às normas, memorial descritivo e relatórios de inspeção termográfica. Documentação que protege seu negócio.',
+  },
+  {
+    icon: `<svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 01-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>`,
+    title: 'Manutenção Elétrica',
+    desc: 'Preventiva e corretiva em quadros, painéis, sistemas de iluminação e infraestrutura predial. Plantão para emergências e contratos mensais.',
   },
   {
     icon: `<svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="3" height="16" rx="1"/><rect x="19" y="4" width="3" height="16" rx="1"/><line x1="5" y1="8" x2="19" y2="8"/><line x1="5" y1="12" x2="19" y2="12"/><line x1="5" y1="16" x2="19" y2="16"/></svg>`,
     title: 'Cabeamento Estruturado',
-    desc: 'Instalação certificada de infraestrutura de rede seguindo padrões ABNT. Organização, rastreabilidade e performance garantidas.',
+    desc: 'Instalação certificada seguindo padrões EIA/TIA. Lançamento de cabos, organização, identificação e teste de cada ponto. Rastreabilidade total.',
   },
   {
-    icon: `<svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2L4.09 12.96A1 1 0 005 14.5h6.5L10 22l9.91-10.96A1 1 0 0019 10h-6.5L13 2z"/></svg>`,
-    title: 'Instalações Elétricas',
-    desc: 'Projetos elétricos residenciais, comerciais e industriais com segurança e eficiência. Laudos, adequações e manutenções preventivas.',
-  },
-  {
-    icon: `<svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="13" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/></svg>`,
-    title: 'Suporte em Informática / TI',
-    desc: 'Manutenção preventiva e corretiva, suporte remoto e presencial, formatações, configuração de equipamentos e gestão de ativos de TI.',
+    icon: `<svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.5" fill="currentColor" stroke="none"/><line x1="12" y1="3" x2="12" y2="7"/><line x1="21" y1="12" x2="17" y2="12"/><line x1="12" y1="21" x2="12" y2="17"/><line x1="3" y1="12" x2="7" y2="12"/></svg>`,
+    title: 'Fibra Óptica',
+    desc: 'Lançamento, fusão e certificação de enlaces de fibra. Backbone interno, conexão entre prédios e link com a operadora — alta capacidade, baixa latência.',
   },
   {
     icon: `<svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="5" r="2"/><circle cx="5" cy="19" r="2"/><circle cx="19" cy="19" r="2"/><path d="M12 7v4"/><path d="M10.5 15.5L6.5 17.5"/><path d="M13.5 15.5L17.5 17.5"/><path d="M12 11L6 17"/><path d="M12 11L18 17"/></svg>`,
-    title: 'Redes Corporativas',
-    desc: 'Configuração de switches, roteadores, firewalls e access points. Projetos de rede completos para ambientes corporativos de qualquer porte.',
+    title: 'Redes & TI',
+    desc: 'Switches, roteadores, firewalls e Wi-Fi corporativo configurados e monitorados. Suporte preventivo e corretivo para manter a operação fluindo.',
   },
 ];
 ---
@@ -32,18 +38,19 @@ const services = [
     <div class="services__header reveal">
       <span class="section-label">Nossos Serviços</span>
       <h2 class="section-title services__title">
-        Tudo que sua empresa<br />
-        precisa em um lugar só.
+        Especialistas em <span class="text-accent">elétrica</span>,<br />
+        prontos para tudo o que conecta.
       </h2>
       <p class="section-sub">
-        Oferecemos soluções integradas de infraestrutura para que seu negócio funcione
-        com segurança, velocidade e estabilidade.
+        Da instalação elétrica industrial ao cabo de rede que conecta o servidor —
+        tudo executado com critério técnico, normas atualizadas e garantia documentada.
       </p>
     </div>
 
     <div class="services__grid">
       {services.map((s, i) => (
-        <article class="card services__card reveal" data-delay={String(i % 3 * 150)}>
+        <article class={`card services__card reveal${s.featured ? ' services__card--featured' : ''}`} data-delay={String(i % 3 * 150)}>
+          {s.featured && <span class="services__featured-tag">Especialidade</span>}
           <span class="card__num">{String(i + 1).padStart(2, '0')}</span>
           <div class="card__icon-wrap">
             <div class="card__icon" set:html={s.icon} />
@@ -126,6 +133,44 @@ const services = [
 .services__card {
   display: flex;
   flex-direction: column;
+}
+
+.services__card--featured {
+  background: linear-gradient(180deg, #fff 0%, #fff7f1 100%);
+  border-color: rgba(255, 107, 26, 0.3);
+}
+
+.services__card--featured .card__icon-wrap {
+  background: linear-gradient(135deg, #fff 0%, rgba(255, 107, 26, 0.08) 100%);
+  border-color: rgba(255, 107, 26, 0.25);
+}
+
+.services__card--featured .card__icon {
+  color: var(--color-accent);
+}
+
+.services__card--featured::before {
+  transform: scaleX(1) !important;
+}
+
+.services__featured-tag {
+  position: absolute;
+  top: 1.25rem;
+  left: 1.5rem;
+  font-family: var(--font-body);
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #fff;
+  background: var(--color-accent);
+  padding: 0.3rem 0.65rem;
+  border-radius: var(--radius-pill);
+  box-shadow: 0 2px 10px rgba(255, 107, 26, 0.3);
+}
+
+.services__card--featured .card__num {
+  display: none;
 }
 
 .card__num {
