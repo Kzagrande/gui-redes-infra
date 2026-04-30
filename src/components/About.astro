@@ -1,0 +1,337 @@
+---
+const stats = [
+  { num: '500', suffix: '+', label: 'Projetos Entregues' },
+  { num: '150', suffix: '+', label: 'Clientes Atendidos' },
+  { num: '8',   suffix: ' anos', label: 'No Mercado' },
+  { num: '24',  suffix: 'h',    label: 'Suporte Disponível' },
+];
+---
+<section class="about" id="sobre">
+  <div class="container about__inner">
+    <div class="about__visual reveal" aria-hidden="true">
+      <div class="rack">
+        <div class="rack__header">
+          <span class="rack__dot rack__dot--r"></span>
+          <span class="rack__dot rack__dot--y"></span>
+          <span class="rack__dot rack__dot--g"></span>
+          <span class="rack__title">aj-redes ~ /infra/status</span>
+        </div>
+        <div class="rack__body">
+          <div class="line"><span class="line__prompt">$</span> ping core-router-01<span class="cursor"></span></div>
+          <div class="line line--ok">→ Latência: 0.4ms · Uptime: 99.99%</div>
+          <div class="line"><span class="line__prompt">$</span> check fiber-link --all</div>
+          <div class="line line--ok">→ 24/24 enlaces ativos · 10 Gbps</div>
+          <div class="line"><span class="line__prompt">$</span> status power --rack</div>
+          <div class="line line--ok">→ Alimentação redundante: OK</div>
+          <div class="line"><span class="line__prompt">$</span> _<span class="cursor"></span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="about__content">
+      <span class="section-label reveal">Sobre a AJ Redes & Infra</span>
+      <h2 class="section-title about__title reveal" data-delay="100">
+        Infraestrutura é<br />
+        <span class="text-accent">o nosso negócio.</span>
+      </h2>
+
+      <p class="about__text reveal" data-delay="200">
+        Nascemos da paixão por redes, energia e tecnologia. Há mais de uma década
+        ajudamos empresas a montar a base que sustenta tudo o que elas fazem
+        digitalmente — do cabo passado dentro do forro ao roteador que conversa com a nuvem.
+      </p>
+
+      <p class="about__text reveal" data-delay="300">
+        Acreditamos que infraestrutura bem feita é invisível: ninguém percebe quando funciona,
+        todo mundo sente quando falha. Por isso entregamos com critério técnico,
+        documentação completa e suporte que não desaparece depois da fatura.
+      </p>
+
+      <ul class="about__values reveal" data-delay="400">
+        <li>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+            <polyline points="20 6 9 17 4 12"/>
+          </svg>
+          <span><strong>Transparência</strong> — sem letra miúda, sem custo escondido.</span>
+        </li>
+        <li>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+            <polyline points="20 6 9 17 4 12"/>
+          </svg>
+          <span><strong>Excelência técnica</strong> — padrões ABNT, materiais certificados.</span>
+        </li>
+        <li>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+            <polyline points="20 6 9 17 4 12"/>
+          </svg>
+          <span><strong>Parceria de longo prazo</strong> — você cresce, a gente acompanha.</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="about__stats">
+    <div class="container about__stats-grid">
+      {stats.map((s, i) => (
+        <div class="stat reveal" data-delay={String(i * 100)}>
+          <div class="stat__value">
+            <span class="stat__num" data-target={s.num}>0</span><span class="stat__suffix">{s.suffix}</span>
+          </div>
+          <span class="stat__label">{s.label}</span>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+.about {
+  padding: var(--section-pad);
+  background:
+    radial-gradient(ellipse 60% 50% at 100% 0%, rgba(255, 107, 26, 0.04) 0%, transparent 60%),
+    var(--bg-primary);
+  position: relative;
+}
+
+.about__inner {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  align-items: center;
+  margin-bottom: 5rem;
+}
+
+@media (min-width: 900px) {
+  .about__inner {
+    grid-template-columns: 1fr 1.05fr;
+    gap: 5rem;
+  }
+}
+
+/* Terminal / rack visual */
+.rack {
+  background: linear-gradient(180deg, #0D1B3E 0%, #0a1530 100%);
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(13, 27, 62, 0.18);
+  font-family: 'Courier New', ui-monospace, monospace;
+  max-width: 480px;
+  margin: 0 auto;
+  transform: perspective(1200px) rotateY(-3deg) rotateX(2deg);
+  transition: transform 0.4s ease;
+}
+
+.rack:hover {
+  transform: perspective(1200px) rotateY(0) rotateX(0);
+}
+
+.rack__header {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.7rem 1rem;
+  background: rgba(255, 255, 255, 0.04);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.rack__dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+}
+
+.rack__dot--r { background: #ff5f57; }
+.rack__dot--y { background: #febc2e; }
+.rack__dot--g { background: #28c840; }
+
+.rack__title {
+  margin-left: auto;
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.45);
+  letter-spacing: 0.05em;
+}
+
+.rack__body {
+  padding: 1.5rem 1.25rem;
+  font-size: 0.85rem;
+  line-height: 1.9;
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.line {
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.line--ok {
+  color: var(--color-accent);
+  padding-left: 1rem;
+  font-size: 0.8rem;
+  margin-bottom: 0.25rem;
+}
+
+.line__prompt {
+  color: var(--color-whatsapp);
+  margin-right: 0.5rem;
+  font-weight: 700;
+}
+
+.cursor {
+  display: inline-block;
+  width: 8px;
+  height: 1em;
+  background: var(--color-accent);
+  vertical-align: text-bottom;
+  margin-left: 2px;
+  animation: blink 1.05s steps(2, jump-none) infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+/* Content */
+.about__title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  margin: 0.5rem 0 1.5rem;
+}
+
+.about__text {
+  font-size: 1.0625rem;
+  color: var(--color-muted);
+  line-height: 1.75;
+  margin-bottom: 1.125rem;
+}
+
+.about__values {
+  list-style: none;
+  margin-top: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+}
+
+.about__values li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  font-size: 0.9375rem;
+  color: var(--color-text);
+  line-height: 1.55;
+}
+
+.about__values svg {
+  color: var(--color-accent);
+  flex-shrink: 0;
+  margin-top: 3px;
+}
+
+.about__values strong {
+  color: var(--color-primary);
+  font-weight: 700;
+}
+
+/* Stats band */
+.about__stats {
+  background: linear-gradient(135deg, var(--color-primary) 0%, #0a3680 100%);
+  border-radius: var(--radius-lg);
+  padding: 3rem 1rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.about__stats::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle 200px at 15% 30%, rgba(255, 107, 26, 0.18) 0%, transparent 70%),
+    radial-gradient(circle 250px at 85% 70%, rgba(26, 95, 212, 0.4) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.about__stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem 1rem;
+  position: relative;
+}
+
+@media (min-width: 768px) {
+  .about__stats-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.stat {
+  text-align: center;
+  position: relative;
+}
+
+.stat:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 0;
+  width: 1px;
+  height: 60%;
+  background: rgba(255, 255, 255, 0.12);
+  transform: translateY(-50%);
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .stat:not(:last-child)::after { display: block; }
+}
+
+.stat__value {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: clamp(2.5rem, 5vw, 3.75rem);
+  color: #FFFFFF;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  margin-bottom: 0.5rem;
+  display: inline-flex;
+  align-items: baseline;
+}
+
+.stat__suffix {
+  color: var(--color-accent);
+}
+
+.stat__label {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.7);
+}
+</style>
+
+<script>
+const counters = document.querySelectorAll<HTMLElement>('.stat__num');
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (!entry.isIntersecting) return;
+    const el = entry.target as HTMLElement;
+    const target = parseInt(el.dataset.target ?? '0', 10);
+    const duration = 1600;
+    const start = performance.now();
+
+    function tick(now: number) {
+      const elapsed = now - start;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      el.textContent = Math.round(target * eased).toString();
+      if (progress < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+    observer.unobserve(el);
+  });
+}, { threshold: 0.4 });
+
+counters.forEach((c) => observer.observe(c));
+</script>
